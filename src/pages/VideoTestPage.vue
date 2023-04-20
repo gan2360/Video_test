@@ -38,13 +38,16 @@ export default {
   methods: {
     initSwiper() {
       this.swiperInstance = new Swiper(".swiper-container", {
-        touchEventsTarget: "container", // 手势事件监听的目标元素
-        touchRatio: 1, // 触摸距离与轮播距离的比率
-        touchAngle: 45, // 触摸移动的角度小于这个值时，Swiper不会执行滑动
-        simulateTouch: true, // 是否开启模拟触摸功能
-        followFinger: true, // 是否开启触摸跟随功能
-        allowTouchMove: true, // 是否允许触摸滑动
-        passiveListeners: false, // 是否使用被动监听器来优化触摸滑动性能，
+        // touchEventsTarget: "container", // 手势事件监听的目标元素
+        // touchRatio: 1, // 触摸距离与轮播距离的比率
+        // touchAngle: 45, // 触摸移动的角度小于这个值时，Swiper不会执行滑动
+        // simulateTouch: true, // 是否开启模拟触摸功能
+        // followFinger: true, // 是否开启触摸跟随功能
+        // allowTouchMove: true, // 是否允许触摸滑动
+        // passiveListeners: false, // 是否使用被动监听器来优化触摸滑动性能，
+        resizeObserver: true,
+        observer: true, //修改swiper自己或子元素时，自动初始化swiper
+        observeParents: true, //修改swiper的父元素时，自动初始化swiper
         loop: true,
         direction: "vertical",
         mousewheel: true,
@@ -61,7 +64,7 @@ export default {
               });
             }
             let activeIndex = this.swiperInstance.activeIndex;
-            videoRefs[activeIndex].play()
+            videoRefs[activeIndex].play();
             console.log(this.swiperInstance.activeIndex);
           },
         },
@@ -69,7 +72,7 @@ export default {
     },
   },
   mounted() {
-    this.$axios
+    this.$axios //
       .post(
         "https://bdb24c6d-8c19-4f80-8e7e-c9c9f037f131.bspapp.com/video",
         this.post_data
@@ -78,14 +81,13 @@ export default {
         (res) => {
           console.log(res.data.data);
           this.VideoData = res.data.data;
-          this.initSwiper()
+          this.initSwiper();
         },
         (err) => {
           console.log(err);
         }
       );
-    },
-
+  },
 };
 </script>
 <style scoped>
