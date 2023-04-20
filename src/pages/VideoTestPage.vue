@@ -38,12 +38,12 @@ export default {
   methods: {
     initSwiper() {
       this.swiperInstance = new Swiper(".swiper-container", {
-        // touchEventsTarget: "container", // 手势事件监听的目标元素
-        // touchRatio: 1, // 触摸距离与轮播距离的比率
-        // touchAngle: 45, // 触摸移动的角度小于这个值时，Swiper不会执行滑动
-        // simulateTouch: true, // 是否开启模拟触摸功能
-        // followFinger: true, // 是否开启触摸跟随功能
-        // allowTouchMove: true, // 是否允许触摸滑动
+        touchEventsTarget: "container", // 手势事件监听的目标元素
+        touchRatio: 1, // 触摸距离与轮播距离的比率
+        touchAngle: 45, // 触摸移动的角度小于这个值时，Swiper不会执行滑动
+        simulateTouch: true, // 是否开启模拟触摸功能
+        followFinger: true, // 是否开启触摸跟随功能
+        allowTouchMove: true, // 是否允许触摸滑动
         // passiveListeners: false, // 是否使用被动监听器来优化触摸滑动性能，
         resizeObserver: true,
         observer: true, //修改swiper自己或子元素时，自动初始化swiper
